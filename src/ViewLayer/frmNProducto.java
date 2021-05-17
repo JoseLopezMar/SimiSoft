@@ -30,7 +30,7 @@ public class frmNProducto extends javax.swing.JDialog {
     public frmNProducto() {
         initComponents();
         this.setLocationRelativeTo(null);
-        cbFarmacia.setModel(producto.GetNamesPharmacy());
+        cbCategoria.setModel(producto.GetCategories());
     }
 
     public frmNProducto(int idProducto) {
@@ -40,10 +40,11 @@ public class frmNProducto extends javax.swing.JDialog {
         producto.setIdProducto(idProducto);
         producto.GetById();
         txtNombre.setText(producto.getNombre());
+        txtPrecio.setText("" + producto.getPrecio());
         txtCaducidad.setDate(producto.getCaducidad());
-        txtStock.setText("" + producto.getStock());
-        cbFarmacia.setModel(producto.GetNamesPharmacy());
-        cbFarmacia.setSelectedItem((Object) producto.NamePharmacy());
+        txtDescuento.setText("" + producto.getDescuento());
+        cbCategoria.setModel(producto.GetCategories());
+        cbCategoria.setSelectedItem((Object) producto.category());
     }
 
     /**
@@ -60,11 +61,13 @@ public class frmNProducto extends javax.swing.JDialog {
         jLabel3 = new javax.swing.JLabel();
         jLabel4 = new javax.swing.JLabel();
         txtNombre = new javax.swing.JTextField();
-        txtStock = new javax.swing.JTextField();
+        txtDescuento = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
         txtCaducidad = new com.toedter.calendar.JDateChooser();
-        cbFarmacia = new javax.swing.JComboBox<>();
+        cbCategoria = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
+        txtPrecio = new javax.swing.JTextField();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
@@ -72,9 +75,9 @@ public class frmNProducto extends javax.swing.JDialog {
 
         jLabel2.setText("Caducidad:");
 
-        jLabel3.setText("Stock:");
+        jLabel3.setText("Descuento:");
 
-        jLabel4.setText("Farmacia:");
+        jLabel4.setText("Precio:");
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -92,7 +95,9 @@ public class frmNProducto extends javax.swing.JDialog {
 
         txtCaducidad.setDateFormatString("dd/MM/yyyy");
 
-        cbFarmacia.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+        cbCategoria.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel5.setText("Categoría:");
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
@@ -102,21 +107,17 @@ public class frmNProducto extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                     .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel1)
+                        .addGap(43, 43, 43)
+                        .addComponent(txtNombre))
+                    .addGroup(layout.createSequentialGroup()
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel1)
-                            .addComponent(jLabel2))
+                            .addComponent(jLabel2)
+                            .addComponent(jLabel3))
                         .addGap(27, 27, 27)
                         .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
                             .addComponent(txtCaducidad, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtNombre)))
-                    .addGroup(layout.createSequentialGroup()
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(jLabel3)
-                            .addComponent(jLabel4))
-                        .addGap(37, 37, 37)
-                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                            .addComponent(cbFarmacia, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                            .addComponent(txtStock))))
+                            .addComponent(txtDescuento))))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
                 .addGap(61, 61, 61)
@@ -124,27 +125,44 @@ public class frmNProducto extends javax.swing.JDialog {
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 96, Short.MAX_VALUE)
                 .addComponent(btnGuardar)
                 .addGap(61, 61, 61))
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel5)
+                .addGap(33, 33, 33)
+                .addComponent(cbCategoria, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addContainerGap())
+            .addGroup(layout.createSequentialGroup()
+                .addContainerGap()
+                .addComponent(jLabel4)
+                .addGap(57, 57, 57)
+                .addComponent(txtPrecio)
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(cbCategoria, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel5))
+                .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
                     .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.TRAILING)
-                    .addComponent(jLabel2)
-                    .addComponent(txtCaducidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtStock, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(19, 19, 19)
+                .addGap(17, 17, 17)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel4)
-                    .addComponent(cbFarmacia, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtPrecio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addGroup(layout.createSequentialGroup()
+                        .addComponent(jLabel2)
+                        .addGap(18, 18, 18)
+                        .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                            .addComponent(jLabel3)
+                            .addComponent(txtDescuento, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE)))
+                    .addComponent(txtCaducidad, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(19, 19, 19)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
                     .addComponent(btnGuardar))
@@ -159,45 +177,46 @@ public class frmNProducto extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if (txtCaducidad.getDate() == null || txtNombre.getText().equals("") || txtStock.getText().equals("")) {
+        if (txtCaducidad.getDate() == null || txtNombre.getText().equals("") || txtPrecio.getText().equals("") || txtDescuento.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellene los campos faltantes", "¡ATENCIÓN!", JOptionPane.WARNING_MESSAGE);
         } else {
-            if (txtStock.getText().chars().allMatch(Character::isDigit)) {
+            try {
+                double esDecimal;
+                esDecimal = Double.parseDouble(txtDescuento.getText());
+                esDecimal = Double.parseDouble(txtPrecio.getText());
+                
                 if (producto.getIdProducto() > 0) {
                     Date date = txtCaducidad.getDate();
                     long d = date.getTime();
                     java.sql.Date fecha = new java.sql.Date(d);
+                    producto.GetIdByCategory((String) cbCategoria.getSelectedItem());
                     producto.setNombre(txtNombre.getText());
+                    producto.setPrecio(txtPrecio.getText());
                     producto.setCaducidad(fecha);
-                    producto.setStock(Integer.parseInt(txtStock.getText()));
-                    producto.GetIdByName((String) cbFarmacia.getSelectedItem());
+                    producto.setDescuento(txtDescuento.getText());
                     producto.setActivo(1);
                     if (producto.Update()) {
-                        JOptionPane.showMessageDialog(null, "Producto actualizado correctamente", "RESULTADOS DE LA OPERACIÓN",
-                                JOptionPane.INFORMATION_MESSAGE);
                         this.dispose();
                     }
                 } else {
                     Date date = txtCaducidad.getDate();
                     long d = date.getTime();
                     java.sql.Date fecha = new java.sql.Date(d);
-                    Producto prod = new Producto();
-                    prod.setNombre(txtNombre.getText());
-                    prod.setCaducidad(fecha);
-                    prod.setStock(Integer.parseInt(txtStock.getText()));
-                    prod.GetIdByName((String) cbFarmacia.getSelectedItem());
-                    prod.setActivo(1);
-                    if (prod.Add()) {
-                        JOptionPane.showMessageDialog(null, "Producto agregado correctamente", "RESULTADOS DE LA OPERACIÓN",
-                                JOptionPane.INFORMATION_MESSAGE);
+                    Producto producto = new Producto();
+                    producto.GetIdByCategory((String) cbCategoria.getSelectedItem());
+                    producto.setNombre(txtNombre.getText());
+                    producto.setPrecio(txtPrecio.getText());
+                    producto.setCaducidad(fecha);
+                    producto.setDescuento(txtDescuento.getText());
+                    producto.setActivo(1);
+                    if (producto.Add()) {
                         this.dispose();
                     }
                 }
-            } else {
-                JOptionPane.showMessageDialog(null, "Rellene el campo de STOCK únicamente con números",
+            } catch (NumberFormatException e) {
+                JOptionPane.showMessageDialog(null, "Rellene el campo de PRECIO y DESCUENTO únicamente con números",
                         "¡ATENCIÓN!", JOptionPane.WARNING_MESSAGE);
             }
-
         }
     }//GEN-LAST:event_btnGuardarActionPerformed
 
@@ -246,13 +265,15 @@ public class frmNProducto extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
-    private javax.swing.JComboBox<String> cbFarmacia;
+    private javax.swing.JComboBox<String> cbCategoria;
     private javax.swing.JLabel jLabel1;
     private javax.swing.JLabel jLabel2;
     private javax.swing.JLabel jLabel3;
     private javax.swing.JLabel jLabel4;
+    private javax.swing.JLabel jLabel5;
     private com.toedter.calendar.JDateChooser txtCaducidad;
+    private javax.swing.JTextField txtDescuento;
     private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtStock;
+    private javax.swing.JTextField txtPrecio;
     // End of variables declaration//GEN-END:variables
 }

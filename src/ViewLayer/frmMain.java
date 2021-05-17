@@ -35,8 +35,17 @@ public class frmMain extends javax.swing.JFrame {
         mnArchivo = new javax.swing.JMenu();
         btnSalir = new javax.swing.JMenuItem();
         mnCatalogos = new javax.swing.JMenu();
+        btnCategorias = new javax.swing.JMenuItem();
+        btnClientes = new javax.swing.JMenuItem();
+        btnContactos = new javax.swing.JMenuItem();
+        btnEstados = new javax.swing.JMenuItem();
+        btnLocalidades = new javax.swing.JMenuItem();
+        btnMunicipios = new javax.swing.JMenuItem();
         btnProductos = new javax.swing.JMenuItem();
-        btnFarmacias = new javax.swing.JMenuItem();
+        btnProductosProvedores = new javax.swing.JMenuItem();
+        btnProveedores = new javax.swing.JMenuItem();
+        btnSucursales = new javax.swing.JMenuItem();
+        btnUsuarios = new javax.swing.JMenuItem();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.EXIT_ON_CLOSE);
 
@@ -65,6 +74,54 @@ public class frmMain extends javax.swing.JFrame {
 
         mnCatalogos.setText("Catalogos");
 
+        btnCategorias.setText("Categorías");
+        btnCategorias.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnCategoriasActionPerformed(evt);
+            }
+        });
+        mnCatalogos.add(btnCategorias);
+
+        btnClientes.setText("Clientes");
+        btnClientes.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnClientesActionPerformed(evt);
+            }
+        });
+        mnCatalogos.add(btnClientes);
+
+        btnContactos.setText("Contactos");
+        btnContactos.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnContactosActionPerformed(evt);
+            }
+        });
+        mnCatalogos.add(btnContactos);
+
+        btnEstados.setText("Estados");
+        btnEstados.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnEstadosActionPerformed(evt);
+            }
+        });
+        mnCatalogos.add(btnEstados);
+
+        btnLocalidades.setText("Localidades");
+        btnLocalidades.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnLocalidadesActionPerformed(evt);
+            }
+        });
+        mnCatalogos.add(btnLocalidades);
+
+        btnMunicipios.setText("Municipios");
+        btnMunicipios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnMunicipiosActionPerformed(evt);
+            }
+        });
+        mnCatalogos.add(btnMunicipios);
+
         btnProductos.setText("Productos");
         btnProductos.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
@@ -73,13 +130,37 @@ public class frmMain extends javax.swing.JFrame {
         });
         mnCatalogos.add(btnProductos);
 
-        btnFarmacias.setText("Farmacias");
-        btnFarmacias.addActionListener(new java.awt.event.ActionListener() {
+        btnProductosProvedores.setText("Productos-Proveedores");
+        btnProductosProvedores.addActionListener(new java.awt.event.ActionListener() {
             public void actionPerformed(java.awt.event.ActionEvent evt) {
-                btnFarmaciasActionPerformed(evt);
+                btnProductosProvedoresActionPerformed(evt);
             }
         });
-        mnCatalogos.add(btnFarmacias);
+        mnCatalogos.add(btnProductosProvedores);
+
+        btnProveedores.setText("Proveedores");
+        btnProveedores.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnProveedoresActionPerformed(evt);
+            }
+        });
+        mnCatalogos.add(btnProveedores);
+
+        btnSucursales.setText("Sucursales");
+        btnSucursales.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnSucursalesActionPerformed(evt);
+            }
+        });
+        mnCatalogos.add(btnSucursales);
+
+        btnUsuarios.setText("Usuarios");
+        btnUsuarios.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnUsuariosActionPerformed(evt);
+            }
+        });
+        mnCatalogos.add(btnUsuarios);
 
         jMenuBar1.add(mnCatalogos);
 
@@ -112,14 +193,95 @@ public class frmMain extends javax.swing.JFrame {
         desktopPane.add(object);
     }//GEN-LAST:event_btnProductosActionPerformed
 
-    private void btnFarmaciasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnFarmaciasActionPerformed
-        frmFarmacias object = new frmFarmacias();
+    private void btnCategoriasActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnCategoriasActionPerformed
+        frmCategoria object = new frmCategoria();
         Dimension desktopSize = desktopPane.getSize();
         Dimension jInternalFrameSize = object.getSize();
         object.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
                 (desktopSize.height - jInternalFrameSize.height) / 2);
         desktopPane.add(object);
-    }//GEN-LAST:event_btnFarmaciasActionPerformed
+    }//GEN-LAST:event_btnCategoriasActionPerformed
+
+    private void btnClientesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnClientesActionPerformed
+        frmClientes object = new frmClientes();
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension jInternalFrameSize = object.getSize();
+        object.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+        desktopPane.add(object);
+    }//GEN-LAST:event_btnClientesActionPerformed
+
+    private void btnContactosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnContactosActionPerformed
+        frmContactos object = new frmContactos();
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension jInternalFrameSize = object.getSize();
+        object.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+        desktopPane.add(object);
+    }//GEN-LAST:event_btnContactosActionPerformed
+
+    private void btnEstadosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEstadosActionPerformed
+        frmEstados object = new frmEstados();
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension jInternalFrameSize = object.getSize();
+        object.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+        desktopPane.add(object);
+    }//GEN-LAST:event_btnEstadosActionPerformed
+
+    private void btnLocalidadesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnLocalidadesActionPerformed
+        frmLocalidades object = new frmLocalidades();
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension jInternalFrameSize = object.getSize();
+        object.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+        desktopPane.add(object);
+    }//GEN-LAST:event_btnLocalidadesActionPerformed
+
+    private void btnMunicipiosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnMunicipiosActionPerformed
+        frmMunicipios object = new frmMunicipios();
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension jInternalFrameSize = object.getSize();
+        object.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+        desktopPane.add(object);
+    }//GEN-LAST:event_btnMunicipiosActionPerformed
+
+    private void btnProveedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProveedoresActionPerformed
+        frmProveedores object = new frmProveedores();
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension jInternalFrameSize = object.getSize();
+        object.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+        desktopPane.add(object);
+    }//GEN-LAST:event_btnProveedoresActionPerformed
+
+    private void btnSucursalesActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnSucursalesActionPerformed
+        frmSucursales object = new frmSucursales();
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension jInternalFrameSize = object.getSize();
+        object.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+        desktopPane.add(object);
+    }//GEN-LAST:event_btnSucursalesActionPerformed
+
+    private void btnUsuariosActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnUsuariosActionPerformed
+        frmUsuarios object = new frmUsuarios();
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension jInternalFrameSize = object.getSize();
+        object.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+        desktopPane.add(object);
+    }//GEN-LAST:event_btnUsuariosActionPerformed
+
+    private void btnProductosProvedoresActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnProductosProvedoresActionPerformed
+        frmProductoProveedores object = new frmProductoProveedores();
+        Dimension desktopSize = desktopPane.getSize();
+        Dimension jInternalFrameSize = object.getSize();
+        object.setLocation((desktopSize.width - jInternalFrameSize.width) / 2,
+                (desktopSize.height - jInternalFrameSize.height) / 2);
+        desktopPane.add(object);
+    }//GEN-LAST:event_btnProductosProvedoresActionPerformed
 
     /**
      * @param args the command line arguments
@@ -157,9 +319,18 @@ public class frmMain extends javax.swing.JFrame {
     }
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
-    private javax.swing.JMenuItem btnFarmacias;
+    private javax.swing.JMenuItem btnCategorias;
+    private javax.swing.JMenuItem btnClientes;
+    private javax.swing.JMenuItem btnContactos;
+    private javax.swing.JMenuItem btnEstados;
+    private javax.swing.JMenuItem btnLocalidades;
+    private javax.swing.JMenuItem btnMunicipios;
     private javax.swing.JMenuItem btnProductos;
+    private javax.swing.JMenuItem btnProductosProvedores;
+    private javax.swing.JMenuItem btnProveedores;
     private javax.swing.JMenuItem btnSalir;
+    private javax.swing.JMenuItem btnSucursales;
+    private javax.swing.JMenuItem btnUsuarios;
     private javax.swing.JDesktopPane desktopPane;
     private javax.swing.JMenuBar jMenuBar1;
     private javax.swing.JMenu mnArchivo;

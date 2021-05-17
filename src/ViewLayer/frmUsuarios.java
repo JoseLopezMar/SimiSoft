@@ -5,21 +5,21 @@
  */
 package ViewLayer;
 
-import BusinessModelLayer.Producto;
+import BusinessModelLayer.Usuario;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author INFO-JOSEASUNCIONLOP
  */
-public class frmProductos extends javax.swing.JInternalFrame {
+public class frmUsuarios extends javax.swing.JInternalFrame {
     
     /**
      * Creates new form frmProductos
      */
-    public frmProductos() {
+    public frmUsuarios() {
         initComponents();
-        jtProductos.setModel(new Producto().GetAllModel());
+        jtUsuarios.setModel(new Usuario().GetAllModel());
     }
 
     /**
@@ -38,7 +38,7 @@ public class frmProductos extends javax.swing.JInternalFrame {
         btnEliminar = new javax.swing.JButton();
         btnOrdenar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtProductos = new javax.swing.JTable();
+        jtUsuarios = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         tfBuscar = new javax.swing.JTextField();
 
@@ -46,7 +46,7 @@ public class frmProductos extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Productos");
+        setTitle("Usuarios");
         setVisible(true);
 
         jToolBar1.setFloatable(false);
@@ -107,7 +107,7 @@ public class frmProductos extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnOrdenar);
 
-        jtProductos.setModel(new javax.swing.table.DefaultTableModel(
+        jtUsuarios.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -118,7 +118,7 @@ public class frmProductos extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jtProductos);
+        jScrollPane1.setViewportView(jtUsuarios);
 
         jLabel1.setText("Buscar por nombre:");
 
@@ -147,33 +147,33 @@ public class frmProductos extends javax.swing.JInternalFrame {
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 10, Short.MAX_VALUE)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(tfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
                     .addComponent(jLabel1))
                 .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 428, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        frmNProducto obj = new frmNProducto();
-        obj.setTitle("Nuevo producto");
+        frmNUsuario obj = new frmNUsuario();
+        obj.setTitle("Nuevo Usuario");
         obj.setModal(true);
         obj.setVisible(true);
-        jtProductos.setModel(new Producto().GetAllModel());
+        jtUsuarios.setModel(new Usuario().GetAllModel());
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        if (jtProductos.getSelectedRow() >= 0) {
-            int idProducto = (int)jtProductos.getValueAt(jtProductos.getSelectedRow(), 0);
-            frmNProducto obj = new frmNProducto(idProducto);
-            obj.setTitle("Modificar producto");
+        if (jtUsuarios.getSelectedRow() >= 0) {
+            int idUsuario = (int)jtUsuarios.getValueAt(jtUsuarios.getSelectedRow(), 0);
+            frmNUsuario obj = new frmNUsuario(idUsuario);
+            obj.setTitle("Modificar usuario");
             obj.setModal(true);
             obj.setVisible(true);
-            jtProductos.setModel(new Producto().GetAllModel());
+            jtUsuarios.setModel(new Usuario().GetAllModel());
         } else{
             JOptionPane.showMessageDialog(null, "Debes de seleccionar un registro dando clic en la tabla",
                     "¡ATENCIÓN!", JOptionPane.WARNING_MESSAGE);
@@ -181,13 +181,13 @@ public class frmProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        if (jtProductos.getSelectedRow() >= 0) {
-            int idProducto = (int)jtProductos.getValueAt(jtProductos.getSelectedRow(), 0);
-            Producto producto = new Producto();
-            producto.setIdProducto(idProducto);
-            if (producto.Delete()) {
+        if (jtUsuarios.getSelectedRow() >= 0) {
+            int idUsuario = (int)jtUsuarios.getValueAt(jtUsuarios.getSelectedRow(), 0);
+            Usuario usuario = new Usuario();
+            usuario.setIdUsuario(idUsuario);
+            if (usuario.Delete()) {
             }
-            jtProductos.setModel(new Producto().GetAllModel());
+            jtUsuarios.setModel(new Usuario().GetAllModel());
         } else{
             JOptionPane.showMessageDialog(null, "Debes de seleccionar un registro dando clic en la tabla",
                     "¡ATENCIÓN!", JOptionPane.WARNING_MESSAGE);
@@ -195,15 +195,15 @@ public class frmProductos extends javax.swing.JInternalFrame {
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        jtProductos.setModel(new Producto().GetAllModel());
+        jtUsuarios.setModel(new Usuario().GetAllModel());
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
-        jtProductos.setModel(new Producto().GetAllOrdered());
+        jtUsuarios.setModel(new Usuario().GetAllOrdered());
     }//GEN-LAST:event_btnOrdenarActionPerformed
 
     private void tfBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfBuscarKeyReleased
-        jtProductos.setModel(new Producto().GetAllSearch(tfBuscar.getText()));
+        jtUsuarios.setModel(new Usuario().GetAllSearch(tfBuscar.getText()));
     }//GEN-LAST:event_tfBuscarKeyReleased
 
 
@@ -216,7 +216,7 @@ public class frmProductos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JTable jtProductos;
+    private javax.swing.JTable jtUsuarios;
     private javax.swing.JTextField tfBuscar;
     // End of variables declaration//GEN-END:variables
 }

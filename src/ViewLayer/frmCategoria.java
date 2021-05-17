@@ -5,21 +5,21 @@
  */
 package ViewLayer;
 
-import BusinessModelLayer.Producto;
+import BusinessModelLayer.Categoria;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author INFO-JOSEASUNCIONLOP
  */
-public class frmProductos extends javax.swing.JInternalFrame {
-    
+public class frmCategoria extends javax.swing.JInternalFrame {
+
     /**
-     * Creates new form frmProductos
+     * Creates new form frmFarmacias
      */
-    public frmProductos() {
+    public frmCategoria() {
         initComponents();
-        jtProductos.setModel(new Producto().GetAllModel());
+        jtCategorias.setModel(new Categoria().GetAllModel());
     }
 
     /**
@@ -38,7 +38,7 @@ public class frmProductos extends javax.swing.JInternalFrame {
         btnEliminar = new javax.swing.JButton();
         btnOrdenar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtProductos = new javax.swing.JTable();
+        jtCategorias = new javax.swing.JTable();
         jLabel1 = new javax.swing.JLabel();
         tfBuscar = new javax.swing.JTextField();
 
@@ -46,10 +46,9 @@ public class frmProductos extends javax.swing.JInternalFrame {
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Productos");
+        setTitle("Categorías");
         setVisible(true);
 
-        jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
         btnActualizar.setText("Actualizar");
@@ -107,7 +106,7 @@ public class frmProductos extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnOrdenar);
 
-        jtProductos.setModel(new javax.swing.table.DefaultTableModel(
+        jtCategorias.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -118,7 +117,7 @@ public class frmProductos extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jtProductos);
+        jScrollPane1.setViewportView(jtCategorias);
 
         jLabel1.setText("Buscar por nombre:");
 
@@ -132,78 +131,76 @@ public class frmProductos extends javax.swing.JInternalFrame {
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
             .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
             .addGroup(layout.createSequentialGroup()
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-                    .addGroup(layout.createSequentialGroup()
-                        .addContainerGap()
-                        .addComponent(jLabel1)
-                        .addGap(10, 10, 10)
-                        .addComponent(tfBuscar)))
+                .addContainerGap()
+                .addComponent(jLabel1)
+                .addGap(18, 18, 18)
+                .addComponent(tfBuscar)
                 .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(tfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(tfBuscar, javax.swing.GroupLayout.DEFAULT_SIZE, 33, Short.MAX_VALUE)
                     .addComponent(jLabel1))
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                .addGap(18, 18, 18)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 413, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        frmNProducto obj = new frmNProducto();
-        obj.setTitle("Nuevo producto");
+        frmNCategoria obj = new frmNCategoria();
+        obj.setTitle("Nueva Categoría");
         obj.setModal(true);
         obj.setVisible(true);
-        jtProductos.setModel(new Producto().GetAllModel());
+        jtCategorias.setModel(new Categoria().GetAllModel());
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        if (jtProductos.getSelectedRow() >= 0) {
-            int idProducto = (int)jtProductos.getValueAt(jtProductos.getSelectedRow(), 0);
-            frmNProducto obj = new frmNProducto(idProducto);
-            obj.setTitle("Modificar producto");
+        if (jtCategorias.getSelectedRow() >= 0) {
+            int idCategoria = (int) jtCategorias.getValueAt(jtCategorias.getSelectedRow(), 0);
+            frmNCategoria obj = new frmNCategoria(idCategoria);
+            obj.setTitle("Modificar categoría");
             obj.setModal(true);
             obj.setVisible(true);
-            jtProductos.setModel(new Producto().GetAllModel());
-        } else{
+            jtCategorias.setModel(new Categoria().GetAllModel());
+        } else {
             JOptionPane.showMessageDialog(null, "Debes de seleccionar un registro dando clic en la tabla",
                     "¡ATENCIÓN!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        if (jtProductos.getSelectedRow() >= 0) {
-            int idProducto = (int)jtProductos.getValueAt(jtProductos.getSelectedRow(), 0);
-            Producto producto = new Producto();
-            producto.setIdProducto(idProducto);
-            if (producto.Delete()) {
+        if (jtCategorias.getSelectedRow() >= 0) {
+            int idCategoria = (int) jtCategorias.getValueAt(jtCategorias.getSelectedRow(), 0);
+            Categoria categoria = new Categoria();
+            categoria.setIdCategoria(idCategoria);
+            if (categoria.Delete()) {
             }
-            jtProductos.setModel(new Producto().GetAllModel());
-        } else{
+            jtCategorias.setModel(new Categoria().GetAllModel());
+        } else {
             JOptionPane.showMessageDialog(null, "Debes de seleccionar un registro dando clic en la tabla",
                     "¡ATENCIÓN!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        jtProductos.setModel(new Producto().GetAllModel());
+        jtCategorias.setModel(new Categoria().GetAllModel());
     }//GEN-LAST:event_btnActualizarActionPerformed
 
     private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
-        jtProductos.setModel(new Producto().GetAllOrdered());
+        jtCategorias.setModel(new Categoria().GetAllOrdered());
     }//GEN-LAST:event_btnOrdenarActionPerformed
 
     private void tfBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfBuscarKeyReleased
-        jtProductos.setModel(new Producto().GetAllSearch(tfBuscar.getText()));
+        jtCategorias.setModel(new Categoria().GetAllSearch(tfBuscar.getText()));
     }//GEN-LAST:event_tfBuscarKeyReleased
 
 
@@ -216,7 +213,8 @@ public class frmProductos extends javax.swing.JInternalFrame {
     private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JTable jtProductos;
+    private javax.swing.JTable jtCategorias;
     private javax.swing.JTextField tfBuscar;
     // End of variables declaration//GEN-END:variables
+
 }

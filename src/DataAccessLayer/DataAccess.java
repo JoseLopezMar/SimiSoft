@@ -36,9 +36,11 @@ public class DataAccess {
 
     public void ConectarDB() {
         try {
-            con = DriverManager.getConnection("jdbc:mysql://localhost:3306/farmaciadb",
-                    "fdb",
-                    "TecPurisima2021#");
+            con = DriverManager.getConnection("jdbc:sqlserver://localhost:1433;"
+                    + "database = SimisoftDB;"
+                    + "user = fdb;"
+                    + "password = fdb;"
+                    + "logingTimeout = 30;");
         } catch (Exception e) {
             JOptionPane.showMessageDialog(null, "Error en la conexión: " + e.getMessage(),
                     "¡ERROR!", JOptionPane.ERROR_MESSAGE);

@@ -5,40 +5,42 @@
  */
 package ViewLayer;
 
-import BusinessModelLayer.Farmacia;
+import BusinessModelLayer.Municipio;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author INFO-JOSEASUNCIONLOP
  */
-public class frmNFarmacia extends javax.swing.JDialog {
-    private int idFarmacia = 0;
-    private Farmacia farmacia = new Farmacia();
+public class frmNMunicipio extends javax.swing.JDialog {
+
+    private int idMunicipio = 0;
+    private Municipio municipio = new Municipio();
 
     /**
-     * Creates new form frmNFarmacia
+     * Creates new form frmNProducto
      */
-    public frmNFarmacia(java.awt.Frame parent, boolean modal) {
+    public frmNMunicipio(java.awt.Frame parent, boolean modal) {
         super(parent, modal);
         initComponents();
         this.setLocationRelativeTo(null);
     }
 
-    public frmNFarmacia() {
+    public frmNMunicipio() {
         initComponents();
         this.setLocationRelativeTo(null);
+        cbEstado.setModel(municipio.GetEstados());
     }
 
-    public frmNFarmacia(int idFarmacia) {
+    public frmNMunicipio(int idMunicipio) {
         initComponents();
         this.setLocationRelativeTo(null);
-        this.idFarmacia = idFarmacia;
-        farmacia.setIdFarmacia(idFarmacia);
-        farmacia.GetById();
-        txtNombre.setText(farmacia.getNombre());
-        txtDireccion.setText(farmacia.getDireccion());
-        txtTelefono.setText("" + farmacia.getTelefono());
+        this.idMunicipio = idMunicipio;
+        municipio.setIdMunicipio(idMunicipio);
+        municipio.GetById();
+        txtMunicipio.setText(municipio.getMunicipio());
+        cbEstado.setModel(municipio.GetEstados());
+        cbEstado.setSelectedItem((Object) municipio.estado());
     }
 
     /**
@@ -51,21 +53,15 @@ public class frmNFarmacia extends javax.swing.JDialog {
     private void initComponents() {
 
         jLabel1 = new javax.swing.JLabel();
-        txtNombre = new javax.swing.JTextField();
-        jLabel2 = new javax.swing.JLabel();
-        jLabel3 = new javax.swing.JLabel();
+        txtMunicipio = new javax.swing.JTextField();
         btnCancelar = new javax.swing.JButton();
         btnGuardar = new javax.swing.JButton();
-        txtDireccion = new javax.swing.JTextField();
-        txtTelefono = new javax.swing.JTextField();
+        cbEstado = new javax.swing.JComboBox<>();
+        jLabel5 = new javax.swing.JLabel();
 
         setDefaultCloseOperation(javax.swing.WindowConstants.DISPOSE_ON_CLOSE);
 
-        jLabel1.setText("Nombre:");
-
-        jLabel2.setText("Dirección:");
-
-        jLabel3.setText("Teléfono:");
+        jLabel1.setText("Municipio:");
 
         btnCancelar.setText("Cancelar");
         btnCancelar.addActionListener(new java.awt.event.ActionListener() {
@@ -81,6 +77,10 @@ public class frmNFarmacia extends javax.swing.JDialog {
             }
         });
 
+        cbEstado.setModel(new javax.swing.DefaultComboBoxModel<>(new String[] { "Item 1", "Item 2", "Item 3", "Item 4" }));
+
+        jLabel5.setText("Estado:");
+
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
@@ -88,25 +88,19 @@ public class frmNFarmacia extends javax.swing.JDialog {
             .addGroup(layout.createSequentialGroup()
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel1)
-                        .addGap(27, 27, 27)
-                        .addComponent(txtNombre, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel3)
-                        .addGap(22, 22, 22)
-                        .addComponent(txtTelefono, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE))
-                    .addGroup(layout.createSequentialGroup()
-                        .addComponent(jLabel2)
-                        .addGap(19, 19, 19)
-                        .addComponent(txtDireccion, javax.swing.GroupLayout.DEFAULT_SIZE, 280, Short.MAX_VALUE)))
+                    .addComponent(jLabel1)
+                    .addComponent(jLabel5))
+                .addGap(33, 33, 33)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(txtMunicipio)
+                    .addComponent(cbEstado, 0, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE))
                 .addContainerGap())
             .addGroup(layout.createSequentialGroup()
-                .addGap(63, 63, 63)
+                .addGap(61, 61, 61)
                 .addComponent(btnCancelar)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, 90, Short.MAX_VALUE)
                 .addComponent(btnGuardar)
-                .addGap(64, 64, 64))
+                .addGap(67, 67, 67))
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
@@ -114,15 +108,11 @@ public class frmNFarmacia extends javax.swing.JDialog {
                 .addContainerGap()
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(jLabel1)
-                    .addComponent(txtNombre, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(txtMunicipio, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel2)
-                    .addComponent(txtDireccion, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
-                .addGap(18, 18, 18)
-                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
-                    .addComponent(jLabel3)
-                    .addComponent(txtTelefono, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
+                    .addComponent(jLabel5)
+                    .addComponent(cbEstado, javax.swing.GroupLayout.PREFERRED_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.PREFERRED_SIZE))
                 .addGap(18, 18, 18)
                 .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
                     .addComponent(btnCancelar)
@@ -138,35 +128,24 @@ public class frmNFarmacia extends javax.swing.JDialog {
     }//GEN-LAST:event_btnCancelarActionPerformed
 
     private void btnGuardarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnGuardarActionPerformed
-        if (txtNombre.getText().equals("") || txtDireccion.getText().equals("") || txtTelefono.getText().equals("")) {
+        if (txtMunicipio.getText().equals("")) {
             JOptionPane.showMessageDialog(null, "Rellene los campos faltantes", "¡ATENCIÓN!", JOptionPane.WARNING_MESSAGE);
         } else {
-            if (txtTelefono.getText().chars().allMatch(Character::isDigit)) {
-                if (farmacia.getIdFarmacia() > 0) {
-                    farmacia.setNombre(txtNombre.getText());
-                    farmacia.setDireccion(txtDireccion.getText());
-                    farmacia.setTelefono(Long.parseLong(txtTelefono.getText()));
-                    farmacia.setActivo(1);
-                    if (farmacia.Update()) {
-                        JOptionPane.showMessageDialog(null, "Farmacia actualizada correctamente", "RESULTADOS DE LA OPERACIÓN",
-                                JOptionPane.INFORMATION_MESSAGE);
-                        this.dispose();
-                    }
-                } else {
-                    if (new Farmacia(txtNombre.getText(), txtDireccion.getText(),
-                            Long.parseLong(txtTelefono.getText()), 1).Add()) {
-                        JOptionPane.showMessageDialog(null, "Farmacia agregada correctamente", "RESULTADOS DE LA OPERACIÓN",
-                                JOptionPane.INFORMATION_MESSAGE);
-                        this.dispose();
-                    }
+            if (municipio.getIdMunicipio() > 0) {
+                municipio.setMunicipio(txtMunicipio.getText());
+                municipio.GetIdByEstado((String) cbEstado.getSelectedItem());
+                if (municipio.Update()) {
+                    this.dispose();
                 }
             } else {
-                JOptionPane.showMessageDialog(null, "Rellene el campo de TELEFONO únicamente con números",
-                        "¡ATENCIÓN!", JOptionPane.WARNING_MESSAGE);
+                Municipio municipio = new Municipio();
+                municipio.setMunicipio(txtMunicipio.getText());
+                municipio.GetIdByEstado((String) cbEstado.getSelectedItem());
+                if (municipio.Add()) {
+                    this.dispose();
+                }
             }
-
         }
-
     }//GEN-LAST:event_btnGuardarActionPerformed
 
     /**
@@ -186,20 +165,23 @@ public class frmNFarmacia extends javax.swing.JDialog {
                 }
             }
         } catch (ClassNotFoundException ex) {
-            java.util.logging.Logger.getLogger(frmNFarmacia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmNMunicipio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (InstantiationException ex) {
-            java.util.logging.Logger.getLogger(frmNFarmacia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmNMunicipio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (IllegalAccessException ex) {
-            java.util.logging.Logger.getLogger(frmNFarmacia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmNMunicipio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         } catch (javax.swing.UnsupportedLookAndFeelException ex) {
-            java.util.logging.Logger.getLogger(frmNFarmacia.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
+            java.util.logging.Logger.getLogger(frmNMunicipio.class.getName()).log(java.util.logging.Level.SEVERE, null, ex);
         }
+        //</editor-fold>
+        //</editor-fold>
+        //</editor-fold>
         //</editor-fold>
 
         /* Create and display the dialog */
         java.awt.EventQueue.invokeLater(new Runnable() {
             public void run() {
-                frmNFarmacia dialog = new frmNFarmacia(new javax.swing.JFrame(), true);
+                frmNMunicipio dialog = new frmNMunicipio(new javax.swing.JFrame(), true);
                 dialog.addWindowListener(new java.awt.event.WindowAdapter() {
                     @Override
                     public void windowClosing(java.awt.event.WindowEvent e) {
@@ -214,11 +196,9 @@ public class frmNFarmacia extends javax.swing.JDialog {
     // Variables declaration - do not modify//GEN-BEGIN:variables
     private javax.swing.JButton btnCancelar;
     private javax.swing.JButton btnGuardar;
+    private javax.swing.JComboBox<String> cbEstado;
     private javax.swing.JLabel jLabel1;
-    private javax.swing.JLabel jLabel2;
-    private javax.swing.JLabel jLabel3;
-    private javax.swing.JTextField txtDireccion;
-    private javax.swing.JTextField txtNombre;
-    private javax.swing.JTextField txtTelefono;
+    private javax.swing.JLabel jLabel5;
+    private javax.swing.JTextField txtMunicipio;
     // End of variables declaration//GEN-END:variables
 }

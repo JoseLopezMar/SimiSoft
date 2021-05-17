@@ -5,22 +5,21 @@
  */
 package ViewLayer;
 
-import BusinessModelLayer.Farmacia;
-import BusinessModelLayer.Producto;
+import BusinessModelLayer.ProductoProveedores;
 import javax.swing.JOptionPane;
 
 /**
  *
  * @author INFO-JOSEASUNCIONLOP
  */
-public class frmFarmacias extends javax.swing.JInternalFrame {
-
+public class frmProductoProveedores extends javax.swing.JInternalFrame {
+    
     /**
-     * Creates new form frmFarmacias
+     * Creates new form frmProductos
      */
-    public frmFarmacias() {
+    public frmProductoProveedores() {
         initComponents();
-        jtFarmacias.setModel(new Farmacia().GetAllModel());
+        jtProductoProveedores.setModel(new ProductoProveedores().GetAllModel());
     }
 
     /**
@@ -37,16 +36,20 @@ public class frmFarmacias extends javax.swing.JInternalFrame {
         btnNuevo = new javax.swing.JButton();
         btnModificar = new javax.swing.JButton();
         btnEliminar = new javax.swing.JButton();
+        btnOrdenar = new javax.swing.JButton();
         jScrollPane1 = new javax.swing.JScrollPane();
-        jtFarmacias = new javax.swing.JTable();
+        jtProductoProveedores = new javax.swing.JTable();
+        jLabel1 = new javax.swing.JLabel();
+        tfBuscar = new javax.swing.JTextField();
 
         setClosable(true);
         setIconifiable(true);
         setMaximizable(true);
         setResizable(true);
-        setTitle("Farmacias");
+        setTitle("Productos-Proveedores");
         setVisible(true);
 
+        jToolBar1.setFloatable(false);
         jToolBar1.setRollover(true);
 
         btnActualizar.setText("Actualizar");
@@ -93,7 +96,18 @@ public class frmFarmacias extends javax.swing.JInternalFrame {
         });
         jToolBar1.add(btnEliminar);
 
-        jtFarmacias.setModel(new javax.swing.table.DefaultTableModel(
+        btnOrdenar.setText("Ordenar");
+        btnOrdenar.setFocusable(false);
+        btnOrdenar.setHorizontalTextPosition(javax.swing.SwingConstants.CENTER);
+        btnOrdenar.setVerticalTextPosition(javax.swing.SwingConstants.BOTTOM);
+        btnOrdenar.addActionListener(new java.awt.event.ActionListener() {
+            public void actionPerformed(java.awt.event.ActionEvent evt) {
+                btnOrdenarActionPerformed(evt);
+            }
+        });
+        jToolBar1.add(btnOrdenar);
+
+        jtProductoProveedores.setModel(new javax.swing.table.DefaultTableModel(
             new Object [][] {
                 {null, null, null, null},
                 {null, null, null, null},
@@ -104,71 +118,93 @@ public class frmFarmacias extends javax.swing.JInternalFrame {
                 "Title 1", "Title 2", "Title 3", "Title 4"
             }
         ));
-        jScrollPane1.setViewportView(jtFarmacias);
+        jScrollPane1.setViewportView(jtProductoProveedores);
+
+        jLabel1.setText("Buscar por idProveedor:");
+
+        tfBuscar.addKeyListener(new java.awt.event.KeyAdapter() {
+            public void keyReleased(java.awt.event.KeyEvent evt) {
+                tfBuscarKeyReleased(evt);
+            }
+        });
 
         javax.swing.GroupLayout layout = new javax.swing.GroupLayout(getContentPane());
         getContentPane().setLayout(layout);
         layout.setHorizontalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
-            .addComponent(jToolBar1, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
-            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 645, Short.MAX_VALUE)
+            .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 663, Short.MAX_VALUE)
+            .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
+                    .addComponent(jToolBar1, javax.swing.GroupLayout.Alignment.TRAILING, javax.swing.GroupLayout.DEFAULT_SIZE, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                    .addGroup(javax.swing.GroupLayout.Alignment.TRAILING, layout.createSequentialGroup()
+                        .addContainerGap()
+                        .addComponent(jLabel1)
+                        .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                        .addComponent(tfBuscar)))
+                .addContainerGap())
         );
         layout.setVerticalGroup(
             layout.createParallelGroup(javax.swing.GroupLayout.Alignment.LEADING)
             .addGroup(layout.createSequentialGroup()
                 .addComponent(jToolBar1, javax.swing.GroupLayout.PREFERRED_SIZE, 25, javax.swing.GroupLayout.PREFERRED_SIZE)
-                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED)
-                .addComponent(jScrollPane1, javax.swing.GroupLayout.DEFAULT_SIZE, 467, Short.MAX_VALUE))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.RELATED, javax.swing.GroupLayout.DEFAULT_SIZE, Short.MAX_VALUE)
+                .addGroup(layout.createParallelGroup(javax.swing.GroupLayout.Alignment.BASELINE)
+                    .addComponent(tfBuscar, javax.swing.GroupLayout.PREFERRED_SIZE, 33, javax.swing.GroupLayout.PREFERRED_SIZE)
+                    .addComponent(jLabel1))
+                .addPreferredGap(javax.swing.LayoutStyle.ComponentPlacement.UNRELATED)
+                .addComponent(jScrollPane1, javax.swing.GroupLayout.PREFERRED_SIZE, 422, javax.swing.GroupLayout.PREFERRED_SIZE))
         );
 
         pack();
     }// </editor-fold>//GEN-END:initComponents
 
     private void btnNuevoActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnNuevoActionPerformed
-        frmNFarmacia obj = new frmNFarmacia();
-        obj.setTitle("Nueva farmacia");
+        frmNProductoProveedores obj = new frmNProductoProveedores();
+        obj.setTitle("Nuevo productos-proveedores");
         obj.setModal(true);
         obj.setVisible(true);
-        jtFarmacias.setModel(new Farmacia().GetAllModel());
+        jtProductoProveedores.setModel(new ProductoProveedores().GetAllModel());
     }//GEN-LAST:event_btnNuevoActionPerformed
 
     private void btnModificarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnModificarActionPerformed
-        if (jtFarmacias.getSelectedRow() >= 0) {
-            int idFarmacia = (int) jtFarmacias.getValueAt(jtFarmacias.getSelectedRow(), 0);
-            frmNFarmacia obj = new frmNFarmacia(idFarmacia);
-            obj.setTitle("Modificar farmacia");
+        if (jtProductoProveedores.getSelectedRow() >= 0) {
+            int idProductoProveedores = (int)jtProductoProveedores.getValueAt(jtProductoProveedores.getSelectedRow(), 0);
+            frmNProductoProveedores obj = new frmNProductoProveedores(idProductoProveedores);
+            obj.setTitle("Modificar productos-proveedores");
             obj.setModal(true);
             obj.setVisible(true);
-            jtFarmacias.setModel(new Farmacia().GetAllModel());
-        } else {
+            jtProductoProveedores.setModel(new ProductoProveedores().GetAllModel());
+        } else{
             JOptionPane.showMessageDialog(null, "Debes de seleccionar un registro dando clic en la tabla",
                     "¡ATENCIÓN!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnModificarActionPerformed
 
     private void btnEliminarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnEliminarActionPerformed
-        if (jtFarmacias.getSelectedRow() >= 0) {
-            int idFarmacia = (int) jtFarmacias.getValueAt(jtFarmacias.getSelectedRow(), 0);
-            Farmacia farmacia = new Farmacia();
-            Producto producto = new Producto();
-            farmacia.setIdFarmacia(idFarmacia);
-            producto.setIdFarmacia(idFarmacia);
-            if (farmacia.Delete() && producto.Delete(idFarmacia)) {
-                JOptionPane.showMessageDialog(null, "Farmacia borrada correctamente, así como sus productos", "RESULTADOS DE LA OPERACIÓN",
-                        JOptionPane.INFORMATION_MESSAGE);
+        if (jtProductoProveedores.getSelectedRow() >= 0) {
+            int idProductoProveedores = (int)jtProductoProveedores.getValueAt(jtProductoProveedores.getSelectedRow(), 0);
+            ProductoProveedores productoProveedores = new ProductoProveedores();
+            productoProveedores.setIdProductoProveedor(idProductoProveedores);
+            if (productoProveedores.Delete()) {
             }
-            jtFarmacias.setModel(new Farmacia().GetAllModel());
-        } else {
+            jtProductoProveedores.setModel(new ProductoProveedores().GetAllModel());
+        } else{
             JOptionPane.showMessageDialog(null, "Debes de seleccionar un registro dando clic en la tabla",
                     "¡ATENCIÓN!", JOptionPane.WARNING_MESSAGE);
         }
     }//GEN-LAST:event_btnEliminarActionPerformed
 
     private void btnActualizarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnActualizarActionPerformed
-        jtFarmacias.setModel(new Farmacia().GetAllModel());
-        JOptionPane.showMessageDialog(null, "Tabla actualizada correctamente", "RESULTADOS DE LA OPERACIÓN",
-                        JOptionPane.INFORMATION_MESSAGE);
+        jtProductoProveedores.setModel(new ProductoProveedores().GetAllModel());
     }//GEN-LAST:event_btnActualizarActionPerformed
+
+    private void btnOrdenarActionPerformed(java.awt.event.ActionEvent evt) {//GEN-FIRST:event_btnOrdenarActionPerformed
+        jtProductoProveedores.setModel(new ProductoProveedores().GetAllOrdered());
+    }//GEN-LAST:event_btnOrdenarActionPerformed
+
+    private void tfBuscarKeyReleased(java.awt.event.KeyEvent evt) {//GEN-FIRST:event_tfBuscarKeyReleased
+        jtProductoProveedores.setModel(new ProductoProveedores().GetAllSearch(tfBuscar.getText()));
+    }//GEN-LAST:event_tfBuscarKeyReleased
 
 
     // Variables declaration - do not modify//GEN-BEGIN:variables
@@ -176,9 +212,11 @@ public class frmFarmacias extends javax.swing.JInternalFrame {
     private javax.swing.JButton btnEliminar;
     private javax.swing.JButton btnModificar;
     private javax.swing.JButton btnNuevo;
+    private javax.swing.JButton btnOrdenar;
+    private javax.swing.JLabel jLabel1;
     private javax.swing.JScrollPane jScrollPane1;
     private javax.swing.JToolBar jToolBar1;
-    private javax.swing.JTable jtFarmacias;
+    private javax.swing.JTable jtProductoProveedores;
+    private javax.swing.JTextField tfBuscar;
     // End of variables declaration//GEN-END:variables
-
 }
